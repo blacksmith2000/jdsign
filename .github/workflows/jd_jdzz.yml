@@ -1,32 +1,50 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: jd_mohe
+name: jd_zz赚赚
+
 on:
   workflow_dispatch:
   schedule:
-    - cron: '1 */3 * * *'
+    - cron: '08 17,2 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_mohe
+    types: jd_zz赚赚
 jobs:
   build:
 
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 10.x
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: hajiuhajiu/jdsign1112
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: 10.x
+          node-version: ${{ matrix.node-version }}
+      - name: Cache node_modules
+        uses: actions/cache@v2 # 使用 GitHub 官方的缓存 Action。
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
       - name: npm install
         run: |
           npm install
-      - name: '运行 【jd_mohe】'
+      - name: '运行jd_zz）'
         run: |
-          node jd_mohe.js
+          # random_time=$(($RANDOM % 20))
+          # echo "等待 ${random_time} 分钟后开始执行"
+          # for((i=1; i<=${random_time}; i++));  
+          # do
+          # echo "倒计时 $[${random_time}-$i] 分钟"
+          #  sleep 1m
+          # done
+          node jd_jdzz.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}

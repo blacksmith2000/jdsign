@@ -1,9 +1,9 @@
-name: 直播红包雨 2-5
+name: 小鸽有礼
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 10,11,12 * * *'
+    - cron: '0 23 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,22 +28,12 @@ jobs:
       - name: npm install
         run: |
           curl https://raw.githubusercontent.com/LXK9301/jd_scripts/master/package.json -o package.json
-          curl https://raw.githubusercontent.com/x1iu/scripts_jd/master/USER_AGENTS.js -o USER_AGENTS.js
-          curl https://raw.githubusercontent.com/x1iu/jd_scripts/master/jdCookie.js -o jdCookie.js
           npm install
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.7
-      - name: 阻塞运行
-        run: |
-          curl https://raw.githubusercontent.com/x1iu/jd_scripts/master/wait24.py -o wait.py
-          python3 wait.py 
       - name: '运行'
         run: |
-          node jd_live_redrain2.js
-          sleep 1m
-          node jd_live_redrain2.js
+          curl https://raw.githubusercontent.com/x1iu/scripts_jd/master/USER_AGENTS.js -o USER_AGENTS.js
+          curl https://raw.githubusercontent.com/x1iu/jd_scripts/master/jdCookie.js -o jdCookie.js
+          node jd_xg.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}

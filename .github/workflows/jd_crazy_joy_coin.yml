@@ -6,7 +6,7 @@ name: jd_crazy_joy_coin
 on:
   workflow_dispatch:
   schedule:
-    - cron: '20 16,8,6,4,10 * * *'
+    - cron: '20 16,20,22,0,2,4,6,8,10  * * *'
   watch:
     types: started
   repository_dispatch:
@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: duandaxei/jd_scripts
+          repository: hajiuhajiu/jdsign1112
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:

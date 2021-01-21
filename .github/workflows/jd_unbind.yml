@@ -1,9 +1,13 @@
-name: 直播红包雨 2-5
+name: jd_unbind
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 10,11,12 * * *'
+    - cron: '0 4 * * *'
+  watch:
+    types: started
+  repository_dispatch:
+    types: jd_unbind
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,8 +16,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: shylocks/Loon
+          repository: x1iu/bbaase
           ref: 'main'
+          token: ${{ secrets.PAT }}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -27,23 +32,10 @@ jobs:
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
       - name: npm install
         run: |
-          curl https://raw.githubusercontent.com/LXK9301/jd_scripts/master/package.json -o package.json
-          curl https://raw.githubusercontent.com/x1iu/scripts_jd/master/USER_AGENTS.js -o USER_AGENTS.js
-          curl https://raw.githubusercontent.com/x1iu/jd_scripts/master/jdCookie.js -o jdCookie.js
           npm install
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.7
-      - name: 阻塞运行
+      - name: '运行jd_unbind'
         run: |
-          curl https://raw.githubusercontent.com/x1iu/jd_scripts/master/wait24.py -o wait.py
-          python3 wait.py 
-      - name: '运行'
-        run: |
-          node jd_live_redrain2.js
-          sleep 1m
-          node jd_live_redrain2.js
+          node jd_unbind.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -54,4 +46,4 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          UN_BIND_STOP_CARD: ${{ secrets.UN_BIND_STOP_CARD }}
