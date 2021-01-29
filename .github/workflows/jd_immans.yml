@@ -3,7 +3,7 @@ name: jd_immans
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '10 17 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -32,6 +32,20 @@ jobs:
       - name: '运行'
         run: |
     
+          node jd_immans.js
+          node jd_immans.js
+          node jd_immans.js
+          node jd_immans.js
+          node jd_immans.js
+          node jd_immans.js
+          node jd_immans.js
+          node jd_immans.js
+          node jd_immans.js
+          node jd_immans.js
+          node jd_immans.js
+          node jd_immans.js
+          node jd_immans.js
+          node jd_immans.js
           node jd_immans.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
