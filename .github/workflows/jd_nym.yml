@@ -3,7 +3,7 @@ name: jd_nym
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 4,8 * * *'
+    - cron: '53 3,7,21 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
