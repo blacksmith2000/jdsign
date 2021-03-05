@@ -1,20 +1,13 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: jd_joy_run
+name: jd_speed_sign急速版签到及红包
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '59 16,6,11 * * *'
-  watch:
-    types: started
-  repository_dispatch:
-    types: jd_joy_run
+    - cron: '0 16 * * *'
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -35,18 +28,19 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行jd_joy_run'
+      - name: '运行'
         run: |
-
-          node jd_joy_run.js
+          node jd_speed_sign.js
+          sleep 1m
+          node jd_speed_redpocke.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
