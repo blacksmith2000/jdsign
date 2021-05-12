@@ -280,7 +280,7 @@ async function invite(invite_pins) {
           if (LKYL_DATA.errorCode === 'L0001' && !LKYL_DATA.success) {
             console.log('来客有礼宠汪汪token失效');
             $.setdata('', 'jdJoyRunToken');
-            $.msg($.name, '【提示】来客有礼token失效，请重新获取', "微信搜索'来客有礼'小程序\n点击底部的'发现'Tab\n即可获取Token")
+            $.msg($.name, 'shxxx xxxxx，请重新获取', "微信搜索'来客有礼'小程序\n点击底部的'发现'Tab\n即可获取Token")
             $.LKYLLogin = false;
             break
           } else {
@@ -344,13 +344,14 @@ function helpInviteFriend(friendPin) {
     headers.LKYLToken = $.LKYLToken;
     let opt = {
       // url: "//jdjoy.jd.com/common/pet/getPetTaskConfig?reqSource=h5",
-      url: `//draw.jdfcloud.com/common/pet/helpFriend?friendPin=${encodeURI(friendPin)}&reqSource=h5`,
+      url: `//draw.jdfcloud.com/common/pet/helpFriend?friendPin=${encodeURI(friendPin)}&reqSource=weapp`,
       method: "GET",
       data: {},
       credentials: "include",
       header: {"content-type": "application/json"}
     }
     const url = "https:"+ taroRequest(opt)['url']
+	console.log(url);  /////////////////wwwwadd
     const options = {
       url,
       headers
@@ -363,7 +364,7 @@ function helpInviteFriend(friendPin) {
         } else {
           $.log(`邀请助力结果：${data}`);
           data = JSON.parse(data);
-          // {"errorCode":"help_ok","errorMessage":null,"currentTime":1600254297789,"data":29466,"success":true}
+          // {"errorCode":"help_ok","errorMessage":null,"currentTime":1600254297789,"data":145438,"success":true}
           if (data.success && data.errorCode === 'help_ok') {
             $.inviteReward += 30;
           }

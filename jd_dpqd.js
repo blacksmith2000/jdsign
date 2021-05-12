@@ -16,20 +16,31 @@ let vender=''
 let num=0
 let shopname=''
 const token=[
-  '07CBF9FC8DE65E3880ABD05B9A952866',//3.12天添加30天30
-  '7B6DC80A3EA9AAFCB217BADAD8B3E5E2',//3.12天添加7天2  15天20 
-  'D41ECBFE12AB0B3C94EFE087AFB5CED0',//3.12天添加14天20京豆 30天5红包
-  'AED8C5384AD3E0983D7883740753D7D6',//3.15日添加10天20
-  'F2FA870C86F2BDC5B11B92A7DC671256',//3.17日添加10天8 20天66
-  'A35B7B46F7B056EFE884124129793A9E',//3.18日添加7天5  10天10 15天20
-  '8BB3061D36F7B14D248A04D67A55B95F',//3.18日添加7天10
-  'BE14F5A622AE95080CBB24037CEB3A54',//3.19日添加3天10
-  '951B100390D6BC3FB7789653FF32BB4C',//3.21日添加7天100
-  '3705A68958B2883E8D5F082269B5D96B',//3.21日添加3天5
-  '61617BFE2E14580A16DDA73FA9E4F911',//3.21日添加7天1红包
-  '732B48427C8380EB7717B3CA3DB3537A',//3.21日添加3天1
-  '98D37500400A712301AE1CCCD653DDE0',//3.22日添加3天2 5天5 7天10
   
+  
+'D0B40CECAE6F7A56233AEF8941BF41F2',
+'44C403560C3D1E58833F8B8B5B55EF09',
+'3754B9A3985AC58B8845601D12E2186B',
+'AAE69FD466B2F772AC25DC35B858DEF7',
+'0ABE393FE90F84788A51403FD3B81325',
+'9B52AC133DA26C91696E77AF628DF9C2',
+'C3DD78B8BF2F15C34A2E804FF3A287EB',
+'F4965FF96007AB8E6D98DAEF64737C7A',//1.
+'337E8731A2F9116BAA193FF23A1C377B',//2.
+'7AE7B2AD63D85F3A772E3CE6B63926A5',//4.
+'1A87038205A08C9C43EB70AC85297AC2',//5.
+'D13AE785721F25079E55E55DD07FC9FF',//6.
+'C8493AD2B9EA07E41EB717798AF1C680',//9.
+'8C7DA9DF294D17E15A4D125CC6C89040',//11.
+'F7592A0CD9244ABDBA61D19BBBA53EB8',//12.
+'8DC1D8206B439F869E8DC5A9D184E7E4',//13
+'5561CB117D13574AFD92C258256C1991',//15
+'A003F5734F1000D21EFC36A82126963C',//17
+'293BA85A07FA4B8DD14864A2317C81C8',//19
+'55EAD3DAF86E47E81EF6C2D061177FAD',//20
+
+
+
 ]
 //IOS等用户直接用NobyDa的jd cookie
 
@@ -181,7 +192,7 @@ function getActivityInfo(token,venderId) {
         "accept-encoding": "gzip, deflate",
         "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
         "cookie": cookie,
-        "referer": `https://h5.m.jd.com/babelDiy/Zeus/2PAAf74aG3D61qvfKUM5dxUssJQ9/index.html?token=${token}&sceneval=2&jxsid=16105853541009626903&cu=true&utm_source=kong&utm_medium=jingfen&utm_campaign=t_1001280291_&utm_term=fa3f8f38c56f44e2b4bfc2f37bce9713`,
+         "referer": `https://h5.m.jd.com/babelDiy/Zeus/2PAAf74aG3D61qvfKUM5dxUssJQ9/index.html?token=${token}&sceneval=2&jxsid=16178634353215523301&cu=true&utm_source=kong&utm_medium=jingfen&utm_campaign=t_2009753434_&utm_term=fa3f8f38c56f44e2b4bfc2f37bce9713`,
         "User-Agent": `Mozilla/5.0 (Linux; U; Android 10; zh-cn; MI 8 Build/QKQ1.190828.002) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/79.0.3945.147 Mobile Safari/537.36 XiaoMi/MiuiBrowser/13.5.40`
       }
     }
@@ -224,7 +235,7 @@ function signCollectGift(token,venderId,activitytemp) {
         "accept-encoding": "gzip, deflate",
         "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
         "cookie": cookie,
-        "referer": `https://h5.m.jd.com/babelDiy/Zeus/2PAAf74aG3D61qvfKUM5dxUssJQ9/index.html?token=${token}&sceneval=2&jxsid=16105853541009626903&cu=true&utm_source=kong&utm_medium=jingfen&utm_campaign=t_1001280291_&utm_term=fa3f8f38c56f44e2b4bfc2f37bce9713`,
+        "referer": `https://h5.m.jd.com/babelDiy/Zeus/2PAAf74aG3D61qvfKUM5dxUssJQ9/index.html?token=${token}&sceneval=2&jxsid=16178634353215523301&cu=true&utm_source=kong&utm_medium=jingfen&utm_campaign=t_2009753434_&utm_term=fa3f8f38c56f44e2b4bfc2f37bce9713`,
         "User-Agent": `Mozilla/5.0 (Linux; U; Android 10; zh-cn; MI 8 Build/QKQ1.190828.002) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/79.0.3945.147 Mobile Safari/537.36 XiaoMi/MiuiBrowser/13.5.40`
       }
     }
@@ -314,7 +325,7 @@ function TotalBean() {
               $.isLogin = false; //cookie过期
               return
             }
-            $.nickName = data['base'].nickname;
+            $.nickName = (data['base'] && data['base'].nickname) || $.UserName;
           } else {
             console.log(`京东服务器返回空数据`)
           }
