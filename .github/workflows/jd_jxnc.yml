@@ -6,7 +6,7 @@ name: jd_jxnc农场
 on:
   workflow_dispatch:
   schedule:
-    - cron: '21 16,13 * * *'
+    - cron: '57 15,21,6 * * *'
   repository_dispatch:
     types: jd_jxnc
 jobs:
@@ -17,9 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          repository: hajiuhajiu/jdsign1112
-          ref: master
+
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -36,6 +35,7 @@ jobs:
           npm install
       - name: 'jd_jxnc'
         run: |
+          curl https://raw.githubusercontent.com/1277002811/JDbot/master/jd_jxnc.js -o jd_jxnc.js
           node jd_jxnc.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
@@ -45,10 +45,13 @@ jobs:
           QQ_SKEY: ${{ secrets.QQ_SKEY }}
           QQ_MODE: ${{ secrets.QQ_MODE }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          QYWX_KEY: ${{ secrets.QYWX_KEY }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          PUSH_PLUS_USER: ${{  secrets.PUSH_PLUS_USER }}
 
