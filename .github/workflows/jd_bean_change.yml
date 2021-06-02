@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:
@@ -24,6 +24,7 @@ jobs:
       - name: npm install
         run: |
           npm install
+          npm install got
       - name: '运行 【京豆变动通知】'
         run: |
           node jd_bean_change.js

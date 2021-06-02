@@ -6,7 +6,7 @@ name: 0406店铺签到有礼+关注有礼
 on:
   workflow_dispatch:
   schedule:
-    - cron: '57 15,12 * * *'
+    - cron: '57 18,12 * * *'
   repository_dispatch:
     types: 店铺签到相关
 jobs:
@@ -17,9 +17,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          repository: hajiuhajiu/jdsign1112
-          ref: master
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -37,10 +35,10 @@ jobs:
       - name: '签到'
         run: |
 
-          curl https://raw.githubusercontent.com/hajiuhajiu/jdsign1112/master/jd_shop_follow_sku.js -o jd_shop_follow_sku.js
+          
           node jd_shop_follow_sku.js
           sleep 5
-          curl https://raw.githubusercontent.com/hajiuhajiu/jdsign1112/master/jd_shop_lottery.js -o jd_shop_lottery.js
+          
           node jd_shop_lottery.js
           sleep 5
                   

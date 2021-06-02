@@ -6,7 +6,7 @@ name: 0406jxcfdtx
 on:
   workflow_dispatch:
   schedule:
-    - cron: '57 15,4 * * *'
+    - cron: '57 17,4 * * *'
   repository_dispatch:
     types: cfd
 jobs:
@@ -17,9 +17,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          repository: hajiuhajiu/jdsign1112
-          ref: master
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -37,7 +35,7 @@ jobs:
       - name: 'jxcfdtx'
         run: |
           sleep 1
-          curl https://raw.githubusercontent.com/hajiuhajiu/jdsign1112/master/jx_cfdtx.js -o jx_cfdtx.js
+          
           node jx_cfdtx.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
